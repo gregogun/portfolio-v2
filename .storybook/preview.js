@@ -1,5 +1,6 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { Button, ChakraProvider, Flex, Text } from '@chakra-ui/react';
 import customTheme from '../styles/theme';
+import React from 'react';
 
 export const decorators = [
   (Story) => (
