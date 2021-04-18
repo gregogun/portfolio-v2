@@ -13,7 +13,7 @@ export default function Home() {
       align="center"
     >
       <Head>
-        <title>Create Next App</title>
+        <title>Greg Ogun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
