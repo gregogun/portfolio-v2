@@ -44,13 +44,11 @@ const theme = extendTheme({
           color: 'default.dark',
           _hover: {
             bg: 'default.dark',
-            color: 'default.light',
-            border: 'none'
+            color: 'default.light'
           },
           _active: {
             bg: 'default.dark',
-            color: 'default.light',
-            border: 'none'
+            color: 'default.light'
           },
           _disabled: {
             borderColor: 'neutral.200',
