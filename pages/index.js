@@ -2,7 +2,6 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import '@fontsource/sora/400.css';
 import { Box, Flex, Heading, Link, Text } from '@chakra-ui/layout';
-// import '@fontsource/sora/700.css';
 
 export default function Home() {
   return (
