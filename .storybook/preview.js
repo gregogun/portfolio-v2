@@ -1,11 +1,26 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { Button, ChakraProvider, Flex, useColorMode } from '@chakra-ui/react';
 import customTheme from '../styles/theme';
 import React from 'react';
+
+const Nav = ({ children }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <Flex p="0.5rem" justifyContent="space-between" align="center">
+      {children}
+      <Button onClick={toggleColorMode}>
+        Lights
+        {colorMode === 'light' ? ' off' : ' on'}
+      </Button>
+    </Flex>
+  );
+};
 
 export const decorators = [
   (Story) => (
     <ChakraProvider theme={customTheme}>
-      <Story />
+      <Nav>
+        <Story />
+      </Nav>
     </ChakraProvider>
   )
 ];
