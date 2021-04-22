@@ -6,7 +6,7 @@ This is the 2nd and most recent version of my personal site which I am currently
 
 If you're interested, you can watch me build it live [here](https://www.youtube.com/channel/UCQDUHOvgodaEqjHm9Ihn87w)
 
-**LIVE LINK** - htttps://www.gregogun.com/
+**LIVE LINK** - www.gregogun.com/
 
 This project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
