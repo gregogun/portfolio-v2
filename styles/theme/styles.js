@@ -5,9 +5,5 @@ export const styles = {
       bg: props.colorMode === 'light' ? 'default.light' : 'default.dark',
       color: props.colorMode === 'light' ? 'default.dark' : 'default.light'
     }
-  }),
-  config: {
-    initialColorMode: 'light',
-    useSystemColorMode: false
-  }
+  })
 };
