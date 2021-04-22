@@ -16,18 +16,6 @@ export default {
         type: 'select',
         options: ['primary', 'secondary', 'primaryThemed', 'secondaryThemed']
       }
-    },
-    isActive: {
-      control: {
-        type: 'boolean',
-        options: ['true', 'false']
-      }
-    },
-    isDisabled: {
-      control: {
-        type: 'boolean',
-        options: ['true', 'false']
-      }
     }
   }
 };
@@ -36,17 +24,27 @@ const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'BUTTON',
-  size: 'md',
-  variant: 'primary',
-  isActive: false,
-  isDisabled: false,
-  leftIcon: <CheckCircleIcon />
+  children: 'BUTTON'
 };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   children: 'BUTTON',
-//   size: 'md',
-//   variant: 'secondaryThemed'
-// };
+export const Secondary = Template.bind({});
+Secondary.args = {
+  ...Primary.args,
+  variant: 'secondary'
+};
+
+export const PrimaryThemed = Template.bind({});
+PrimaryThemed.args = {
+  ...Primary.args,
+  variant: 'primaryThemed'
+};
+
+export const SecondaryThemed = Template.bind({});
+SecondaryThemed.args = {
+  ...Primary.args,
+  variant: 'secondaryThemed'
+};
+
+// isActive: false,
+// isDisabled: false,
+// leftIcon: <CheckCircleIcon />
