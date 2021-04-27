@@ -1,10 +1,13 @@
 import { Heading } from '@chakra-ui/layout';
+import Container from '../components/container';
 
 const Projects = () => {
   return (
-    <Heading as="h1" variant="h1">
-      Projects
-    </Heading>
+    <Container>
+      <Heading as="h1" variant="h1">
+        Projects
+      </Heading>
+    </Container>
   );
 };
 

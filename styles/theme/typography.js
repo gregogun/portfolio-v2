@@ -33,7 +33,7 @@ export const Text = {
     }),
     body: (props) => ({
       textStyle: 'body',
-      color: props.colorMode === 'light' ? 'neutral.700' : 'neutral.200'
+      color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.200'
     }),
     bodyLight: (props) => ({
       textStyle: 'bodyLight',
