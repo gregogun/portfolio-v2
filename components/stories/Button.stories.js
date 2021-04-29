@@ -45,6 +45,13 @@ SecondaryThemed.args = {
   variant: 'secondaryThemed'
 };
 
+export const Icon = Template.bind({});
+Icon.args = {
+  ...Primary.args,
+  children: <CheckCircleIcon />,
+  'aria-label': 'Toggle color mode',
+  variant: 'icon'
+};
 // isActive: false,
 // isDisabled: false,
 // leftIcon: <CheckCircleIcon />
