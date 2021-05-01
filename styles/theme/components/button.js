@@ -73,6 +73,13 @@ export const Button = {
       _hover: {
         bg: props.colorMode === 'light' ? 'primary.600' : 'secondary.400'
       }
+    }),
+    icon: (props) => ({
+      bg: props.colorMode === 'light' ? 'neutral.100' : 'neutral.700',
+      color: props.colorMode === 'light' ? 'default.dark' : 'default.light',
+      _hover: {
+        bg: props.colorMode === 'light' ? 'neutral.200' : 'neutral.600'
+      }
     })
   },
   // The default `size` or `variant` values

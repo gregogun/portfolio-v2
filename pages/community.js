@@ -1,12 +1,14 @@
-import { Heading } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/layout';
 import Container from '../components/container';
 
-export default function Home() {
+const Community = () => {
   return (
     <Container>
       <Heading as="h1" variant="h1">
-        Homepage
+        Community
       </Heading>
     </Container>
   );
-}
+};
+
+export default Community;
