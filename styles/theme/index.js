@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { colors } from './colors';
 import { Heading, Text, fonts, textStyles } from './typography';
 import { Button } from './components/button';
+import { Link } from './components/link';
 
 const breakpoints = createBreakpoints({
   sm: '30em',
@@ -22,6 +23,7 @@ const overrides = {
   textStyles,
   components: {
     Button,
+    Link,
     Heading,
     Text
   }
