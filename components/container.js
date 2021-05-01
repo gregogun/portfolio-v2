@@ -10,7 +10,8 @@ import {
   VisuallyHidden,
   Text,
   VStack,
-  useMediaQuery
+  useMediaQuery,
+  Divider
 } from '@chakra-ui/react';
 import '@fontsource/sora/400.css';
 import '@fontsource/sora/700.css';
@@ -20,11 +21,12 @@ import { Logo } from './custom/logo';
 import { useColorMode } from '@chakra-ui/color-mode';
 import { IoMoon, IoSunnyOutline } from 'react-icons/io5';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
-import { useState } from 'react';
 import { github, linkedin, twitch, twitter, youtube } from '../content/socials';
 import { StyledLink } from './styled';
+import useToggle from '../utils/hooks/useToggle';
 
 const Container = ({ children }) => {
+  const [isOpen, toggleIsOpen] = useToggle();
   const meta = {
     title: 'Greg Ogun - Front-end developer',
     description:
@@ -56,9 +58,9 @@ const Container = ({ children }) => {
         minH="100vh"
         m="auto"
       >
-        <Navbar />
+        <Navbar toggleIsOpen={toggleIsOpen} />
         <VStack spacing="32rem" id="skip" as="main">
-          {children}
+          {isOpen ? <MobileNavMenu /> : children}
           <Footer />
         </VStack>
       </Box>
@@ -66,19 +68,26 @@ const Container = ({ children }) => {
   );
 };
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ isOpen, toggleIsOpen }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex as="nav" p="4" justify="space-between">
-      <MenuButton />
+      <MenuButton isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
       <Logo />
       <HStack spacing={{ base: 0, md: 8 }} align="center">
         <Flex display={{ base: 'none', lg: 'flex' }} as="ul">
-          <Item href="/">Home</Item>
-          <Item href="/about">About</Item>
-          <Item href="/projects">Projects</Item>
-          <Item href="/blog">Blog</Item>
+          <Item variant="noStyle" href="/">
+            Home
+          </Item>
+          <Item variant="noStyle" href="/about">
+            About
+          </Item>
+          <Item variant="noStyle" href="/projects">
+            Projects
+          </Item>
+          <Item variant="noStyle" href="/blog">
+            Blog
+          </Item>
         </Flex>
         <IconButton
           borderRadius="sm"
@@ -100,50 +109,111 @@ const Navbar = () => {
   );
 };
 
-const MenuButton = ({ ...props }) => {
+const MobileNavMenu = () => {
+  return (
+    <VStack spacing={4} w="100%">
+      <VStack p={4} w="100%" my={8} spacing={8} as="ul">
+        <Item variant="large" href="/">
+          Home
+        </Item>
+        <Item variant="large" href="/about">
+          About
+        </Item>
+        <Item variant="large" href="/projects">
+          Projects
+        </Item>
+        <Item variant="large" href="/blog">
+          Blog
+        </Item>
+      </VStack>
+      <VStack p={4} w="100%" my={8} spacing={8} as="ul">
+        <Item variant="large" href="/newsletter">
+          Newsletter
+        </Item>
+        <Item variant="large" href="/community">
+          Community
+        </Item>
+        <Item variant="large" href="/uses">
+          Uses
+        </Item>
+      </VStack>
+    </VStack>
+  );
+};
+
+const MenuButton = ({ toggleIsOpen, ...props }) => {
+  const [clicked, toggleClicked] = useToggle();
+
+  const handleClick = () => {
+    toggleIsOpen();
+    toggleClicked();
+  };
   return (
     <IconButton
+      borderRadius="sm"
+      onClick={handleClick}
       display={{ base: 'block', lg: 'none' }}
       w="48px"
       h="48px"
       variant="ghost"
       _hover={{ variant: 'ghost' }}
       {...props}
-      icon={<MenuIcon />}
+      icon={<MenuIcon clicked={clicked} />}
     />
   );
 };
 
-const MenuIcon = ({ isOpen }) => {
+const MenuIcon = ({ clicked }) => {
   const { colorDark } = useColorModeSwitcher();
   return (
-    <Center w="36px" h="20px" position="relative">
-      <Box
-        position="absolute"
-        as="span"
+    <Box w="100%" h="100%" position="relative">
+      <Line
+        left={clicked ? '8px' : '4px'}
         bg={colorDark}
-        height="4px"
-        top="0"
-        width="36px"
+        top={clicked ? '22px' : '16px'}
+        transform={clicked ? 'rotate(45deg)' : 'none'}
+        width={clicked ? '32px' : '40px'}
       />
-      <Box
-        position="absolute"
-        as="span"
+      <Line
+        left={clicked ? '8px' : '4px'}
+        transform={clicked ? 'rotate(-45deg)' : 'none'}
         bg={colorDark}
-        height="4px"
-        bottom="0"
-        left="0"
-        width="18px"
+        bottom={clicked ? '22px' : '16px'}
+        width={clicked ? '32px' : '16px'}
       />
-    </Center>
+    </Box>
   );
 };
 
-const Item = ({ children, href }) => {
+const Line = ({ ...props }) => {
   return (
-    <Box w="100%" h="100%" as="li" listStyleType="none">
-      <StyledLink href={href}>{children}</StyledLink>
-    </Box>
+    <Box
+      {...props}
+      borderRadius="1px"
+      as="span"
+      position="absolute"
+      height="4px"
+      transition="all 0.3s ease-in-out"
+    />
+  );
+};
+
+const Item = ({ children, href, ...props }) => {
+  const [isLarge] = useMediaQuery('(min-width: 992px)');
+  return (
+    <VStack
+      align="start"
+      spacing={4}
+      w="100%"
+      h="100%"
+      as="li"
+      listStyleType="none"
+    >
+      <StyledLink {...props} href={href}>
+        {children}
+      </StyledLink>
+      {!isLarge && <Divider />}
+    </VStack>
   );
 };
 
@@ -239,9 +309,15 @@ const Socials = () => {
 };
 
 const SocialLink = ({ children, icon, href, name }) => {
+  const [hover, toggleHover] = useToggle();
   const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
-    <Center as="li" listStyleType="none">
+    <Center
+      onMouseEnter={toggleHover}
+      onMouseLeave={toggleHover}
+      as="li"
+      listStyleType="none"
+    >
       <Link
         variant="subtle"
         display="flex"
@@ -251,6 +327,9 @@ const SocialLink = ({ children, icon, href, name }) => {
         isExternal
       >
         <Icon
+          transform={hover ? 'translateY(-4px)' : 'none'}
+          transitionProperty="transform"
+          transitionDuration="500ms"
           mr={{ lg: '0.25rem' }}
           boxSize={{ base: '1.5rem', lg: '1rem' }}
           aria-hidden={true}
