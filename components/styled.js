@@ -2,12 +2,12 @@ import { Box, Link } from '@chakra-ui/layout';
 import NextLink from 'next/link';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
 
-export const StyledLink = ({ children, href }) => {
+export const StyledLink = ({ children, href, ...props }) => {
   const { themed } = useColorModeSwitcher();
   return (
     <NextLink href={href} passHref>
       <Link
-        variant="noStyle"
+        {...props}
         mr="1rem"
         position="relative"
         sx={{

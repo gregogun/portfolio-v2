@@ -21,6 +21,15 @@ export const Link = {
         color: props.colorMode === 'light' ? 'default.dark' : 'neutral.200',
         textDecoration: 'none'
       }
+    }),
+    large: (props) => ({
+      fontSize: '1.25rem',
+      color: props.colorMode === 'light' ? 'neutral.600' : 'default.light',
+      textDecoration: 'none',
+      _hover: {
+        color: props.colorMode === 'light' ? 'default.dark' : 'neutral.200',
+        textDecoration: 'none'
+      }
     })
   },
   // default values for `size` and `variant`
