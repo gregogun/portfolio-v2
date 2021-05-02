@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint . --ext .json --ext .js",
     "test": "jest",
     "test:update": "jest -u",
     "test:watch": "jest --watch",
