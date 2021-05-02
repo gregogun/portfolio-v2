@@ -28,7 +28,7 @@ import useToggle from '../utils/hooks/useToggle';
 const Container = ({ children }) => {
   const [isOpen, toggleIsOpen] = useToggle();
   const meta = {
-    title: 'Greg Ogun - Front-end dev',
+    title: 'Greg Ogun',
     description:
       'Self-taught developer with a focus on designing and building scalable, maintainable and accessible solutions on the web.',
     image: 'https://gregogun.com/static/images/banner.png',
