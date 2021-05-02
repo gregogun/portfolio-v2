@@ -14,6 +14,17 @@
     "build-storybook": "build-storybook",
     "prettier": "prettier --write \"**/*.{html,js,jsx,json,md,mdx,yml}\""
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{html,js,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.10",
     "@chakra-ui/react": "^1.5.0",
@@ -44,7 +55,9 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.2"
   }
