@@ -59,7 +59,7 @@ const Container = ({ children }) => {
         m="auto"
       >
         <Navbar toggleIsOpen={toggleIsOpen} />
-        <VStack spacing="32rem" id="skip" as="main">
+        <VStack spacing={48} id="skip" as="main">
           {isOpen ? <MobileNavMenu /> : children}
           <Footer />
         </VStack>
@@ -68,11 +68,11 @@ const Container = ({ children }) => {
   );
 };
 
-const Navbar = ({ isOpen, toggleIsOpen }) => {
+const Navbar = ({ toggleIsOpen }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex as="nav" p="4" justify="space-between">
-      <MenuButton isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
+    <Flex mb={24} as="nav" p="4" justify="space-between">
+      <MenuButton toggleIsOpen={toggleIsOpen} />
       <Logo />
       <HStack spacing={{ base: 0, md: 8 }} align="center">
         <Flex display={{ base: 'none', lg: 'flex' }} as="ul">

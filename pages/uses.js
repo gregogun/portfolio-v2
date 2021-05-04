@@ -1,12 +1,19 @@
-import { Heading } from '@chakra-ui/layout';
+import { Heading, Text } from '@chakra-ui/layout';
 import Container from '../components/container';
+import ContentWrapper from '../components/contentWrapper';
 
 const Uses = () => {
   return (
     <Container>
-      <Heading as="h1" variant="h1">
-        Uses
-      </Heading>
+      <ContentWrapper>
+        <Heading as="h1" variant="h2">
+          Uses 🔌
+        </Heading>
+        <Text>
+          This page will contain information about what software and hardware I
+          currently use day-to-day.
+        </Text>
+      </ContentWrapper>
     </Container>
   );
 };
