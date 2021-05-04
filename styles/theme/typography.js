@@ -17,9 +17,6 @@ export const Heading = {
     },
     h4: {
       textStyle: 'h4'
-    },
-    subtitle: {
-      textStyle: 'subtitle'
     }
   }
 };
@@ -29,6 +26,10 @@ export const Text = {
   variants: {
     preTitle: (props) => ({
       textStyle: 'preTitle',
+      color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.200'
+    }),
+    subtitle: (props) => ({
+      textStyle: 'subtitle',
       color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.200'
     }),
     body: (props) => ({
