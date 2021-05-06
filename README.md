@@ -46,10 +46,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - [Storybook](https://storybook.js.org/)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
+- [Checkly](https://www.checklyhq.com/)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+If you're interested in contributing, or just interested in the main tools I'm using, you can check them out via the links below.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Next.js Docs](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Chakra UI Docs](https://chakra-ui.com/docs/getting-started) - learn about Chakra UI features and API.
+- [Storybook Docs](https://storybook.js.org/docs/react/get-started/introduction) - learn about Storybook features and API.
+
