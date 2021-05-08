@@ -54,7 +54,7 @@ const Container = ({ children }) => {
         Skip to Content
       </Button>
       <Box
-        w={{ base: '100vw', lg: '90vw', '2xl': '72vw' }}
+        w={{ base: '90vw', lg: '90vw', '2xl': '72vw' }}
         minH="100vh"
         m="auto"
       >
