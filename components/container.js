@@ -54,7 +54,7 @@ const Container = ({ children }) => {
         Skip to Content
       </Button>
       <Box
-        w={{ base: '100vw', lg: '90vw', '2xl': '72vw' }}
+        w={{ base: '90vw', lg: '90vw', '2xl': '72vw' }}
         minH="100vh"
         m="auto"
       >
@@ -199,20 +199,23 @@ const Line = ({ ...props }) => {
 };
 
 const Item = ({ children, href, ...props }) => {
+  const { colorGrey } = useColorModeSwitcher();
   const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
     <VStack
       align="start"
       spacing={4}
+      pb={4}
       w="100%"
       h="100%"
       as="li"
       listStyleType="none"
+      borderBottom={!isLarge && '1px solid'}
+      borderColor={colorGrey}
     >
       <StyledLink {...props} href={href}>
         {children}
       </StyledLink>
-      {!isLarge && <Divider />}
     </VStack>
   );
 };
