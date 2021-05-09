@@ -1,5 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import '../styles/globals.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/sora/700.css';
 import customTheme from '../styles/theme';
 
 const MyApp = ({ Component, pageProps }) => {
