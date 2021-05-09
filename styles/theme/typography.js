@@ -1,6 +1,6 @@
 export const fonts = {
   heading: 'Sora',
-  body: 'Sora'
+  body: 'Montserrat'
 };
 
 export const Heading = {
@@ -26,11 +26,11 @@ export const Text = {
   variants: {
     preTitle: (props) => ({
       textStyle: 'preTitle',
-      color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.200'
+      color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.100'
     }),
     subtitle: (props) => ({
       textStyle: 'subtitle',
-      color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.200'
+      color: props.colorMode === 'light' ? 'neutral.600' : 'neutral.100'
     }),
     body: (props) => ({
       textStyle: 'body',
@@ -83,7 +83,7 @@ export const textStyles = {
   },
   body: {
     fontSize: '16px',
-    fontWeight: 400,
+    fontWeight: 500,
     lineHeight: '150%'
   },
   bodyLight: {
