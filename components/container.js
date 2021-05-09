@@ -59,7 +59,7 @@ const Container = ({ children }) => {
         m="auto"
       >
         <Navbar toggleIsOpen={toggleIsOpen} />
-        <VStack spacing={48} id="skip" as="main">
+        <VStack spacing={{ base: '8rem', lg: '10rem' }} id="skip" as="main">
           {isOpen ? <MobileNavMenu /> : children}
           <Footer />
         </VStack>
