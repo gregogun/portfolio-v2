@@ -12,8 +12,6 @@ import {
   VStack,
   useMediaQuery
 } from '@chakra-ui/react';
-import '@fontsource/sora/400.css';
-import '@fontsource/sora/700.css';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { Logo } from './custom/logo';
@@ -94,6 +92,7 @@ const Navbar = ({ isOpen, toggleIsOpen }) => {
           </Item>
         </Flex>
         <IconButton
+          id="toggleTheme"
           borderRadius="sm"
           variant="icon"
           onClick={toggleColorMode}
