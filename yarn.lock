@@ -1886,6 +1886,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/montserrat@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.3.0.tgz#841d46d83d38bcf0d19e8788de741acf2ea4e7ed"
+  integrity sha512-KFJlFfgPtCP1vR9YIUSQbDBhdVadLs9b+STpBjGxWMg5MNzoKVt7IQmf9UEKyxzsXyOQkQI6TqGG38fY0cdkwg==
+
 "@fontsource/sora@^4.2.2":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@fontsource/sora/-/sora-4.2.2.tgz#a7f41431016fb8c35d09d084b7fce88ebb062373"
