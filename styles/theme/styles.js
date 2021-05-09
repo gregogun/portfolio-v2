@@ -4,6 +4,9 @@ export const styles = {
       overflowX: 'hidden',
       bg: props.colorMode === 'light' ? 'default.light' : 'default.dark',
       color: props.colorMode === 'light' ? 'default.dark' : 'default.light'
+    },
+    div: {
+      borderRadius: 'md'
     }
   })
 };
