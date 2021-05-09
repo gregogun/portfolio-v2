@@ -29,5 +29,11 @@ export const colors = {
     500: '#737373',
     600: '#595959',
     700: '#404040'
+  },
+  accent: {
+    successLight: '#68D391',
+    successDark: '#276749',
+    errorLight: '#FC8181',
+    errorDark: '#AA0000'
   }
 };
