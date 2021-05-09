@@ -88,6 +88,7 @@ const Navbar = ({ toggleIsOpen }) => {
           </Item>
         </Flex>
         <IconButton
+          id="toggleTheme"
           borderRadius="sm"
           variant="icon"
           onClick={toggleColorMode}
