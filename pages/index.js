@@ -6,9 +6,12 @@ import {
   VStack,
   Box,
   useMediaQuery,
-  Button
+  Button,
+  Link
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import Container from '../components/container';
+import { HeroVisual } from '../components/custom/heroVisual';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
 
 export default function Home() {
@@ -24,10 +27,10 @@ export default function Home() {
 }
 
 const Hero = () => {
-  const [isLarge] = useMediaQuery('(min-width: 992px)');
+  const [isXtraLarge] = useMediaQuery('(min-width: 1280px)');
   return (
-    <Flex>
-      <Box w={{ base: '100%', lg: '596px' }} h="100%">
+    <Flex w={{ base: '90%', sm: '100%' }}>
+      <Box m="auto" w={{ base: '100%', lg: '596px' }} h="100%">
         <Heading as="h1" variant="h1">
           Hi, I’m Greg Ogun.
         </Heading>
@@ -50,11 +53,7 @@ const Hero = () => {
           Get in touch
         </Button>
       </Box>
-      {isLarge && (
-        <Center border="1px solid" boxSize="600px">
-          <Text>Hero Visual</Text>
-        </Center>
-      )}
+      {isXtraLarge && <HeroVisual />}
     </Flex>
   );
 };
@@ -62,56 +61,76 @@ const Hero = () => {
 const FeaturedProjects = () => {
   const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
-    <Box w="100%" m="auto">
+    <VStack spacing="4rem" w="100%" m="auto">
       <FeatureHeading>Featured Projects</FeatureHeading>
       <Flex
+        w="100%"
         mb="2.5rem"
-        direction={{ base: 'column', lg: 'row' }}
+        direction={{ base: 'column', xl: 'row' }}
         justify="space-evenly"
       >
         <Center
-          mb={!isLarge && '2.5rem'}
+          mx="auto"
+          mb={{ base: '2.5rem', xl: null }}
           border="1px solid"
           boxSize={{ base: '20rem', lg: '30rem' }}
         >
           Project 1
         </Center>
-        <Center border="1px solid" boxSize={{ base: '20rem', lg: '30rem' }}>
+        <Center
+          mx="auto"
+          border="1px solid"
+          boxSize={{ base: '20rem', lg: '30rem' }}
+        >
           Project 2
         </Center>
       </Flex>
-      <Text textAlign="center">See all projects</Text>
-    </Box>
+      <NextLink href="/projects" passHref>
+        <Link
+          display="block"
+          textAlign="center"
+          fontSize={{ base: 'lg', lg: '2xl' }}
+        >
+          See all projects
+        </Link>
+      </NextLink>
+    </VStack>
   );
 };
 
 const FeaturedArticles = () => {
-  const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
-    <Box w="100%" m="auto">
+    <VStack spacing="4rem" w="100%" mx="auto">
       <FeatureHeading>Featured Articles</FeatureHeading>
       <ArticleCard />
       <ArticleCard />
-      <Text textAlign="center">Read all articles</Text>
-    </Box>
+      <NextLink href="/blog" passHref>
+        <Link
+          display="block"
+          textAlign="center"
+          fontSize={{ base: 'lg', lg: '2xl' }}
+        >
+          Read all articles
+        </Link>
+      </NextLink>
+    </VStack>
   );
 };
 
-const ArticleCard = () => {
+export const ArticleCard = () => {
   const { colorGrey } = useColorModeSwitcher();
   return (
     <Box
       mx="auto"
-      mb={{ base: '2.5rem', lg: '4rem' }}
       p="2rem"
       border="1px solid"
       borderColor={colorGrey}
       w={{ base: '21em', lg: '57.5rem' }}
     >
-      <Heading textTransform="capitalize" as="h3" variant="h3" mb="0.5rem">
+      <Heading textTransform="capitalize" as="h4" variant="h4" mb="0.5rem">
         A heading for my amazing blog post
       </Heading>
-      <Text variant="subtitle" mb="2rem">
+      <Text variant="body" mb="2rem">
         This is some arbitrary subtitle for my amazing blog post that you should
         most definitely read!
       </Text>
@@ -131,12 +150,7 @@ const ContentWrapper = ({ children }) => {
 
 const FeatureHeading = ({ children }) => {
   return (
-    <Heading
-      textAlign="center"
-      mb={{ base: '2.5rem', lg: '4rem' }}
-      as="h2"
-      variant="h2"
-    >
+    <Heading textAlign="center" as="h2" variant="h2">
       {children}
     </Heading>
   );
