@@ -10,8 +10,7 @@ import {
   VisuallyHidden,
   Text,
   VStack,
-  useMediaQuery,
-  Divider
+  useMediaQuery
 } from '@chakra-ui/react';
 import '@fontsource/sora/400.css';
 import '@fontsource/sora/700.css';
@@ -54,11 +53,11 @@ const Container = ({ children }) => {
         Skip to Content
       </Button>
       <Box
-        w={{ base: '90vw', lg: '90vw', '2xl': '72vw' }}
+        w={{ base: '100vw', sm: '90vw', lg: '90vw', '2xl': '72vw' }}
         minH="100vh"
         m="auto"
       >
-        <Navbar toggleIsOpen={toggleIsOpen} />
+        <Navbar isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
         <VStack spacing={{ base: '8rem', lg: '10rem' }} id="skip" as="main">
           {isOpen ? <MobileNavMenu /> : children}
           <Footer />
@@ -68,10 +67,15 @@ const Container = ({ children }) => {
   );
 };
 
-const Navbar = ({ toggleIsOpen }) => {
+const Navbar = ({ isOpen, toggleIsOpen }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex mb={24} as="nav" p="4" justify="space-between">
+    <Flex
+      mb={isOpen ? { base: '1rem' } : { base: '4.5rem', lg: '6rem' }}
+      as="nav"
+      p="4"
+      justify="space-between"
+    >
       <MenuButton toggleIsOpen={toggleIsOpen} />
       <Logo />
       <HStack spacing={{ base: 0, md: 8 }} align="center">
@@ -226,9 +230,8 @@ const Footer = () => {
     <VStack
       borderTop="1px solid"
       borderColor="neutral.200"
-      h="336px"
       py="32px"
-      w="80%"
+      w="100%"
       spacing={{ base: '16px', lg: '64px' }}
       as="footer"
     >
@@ -256,7 +259,7 @@ const Condensed = () => {
 
 const Full = () => {
   return (
-    <HStack spacing="256px">
+    <HStack align="start" spacing="16rem">
       <MainRoutes />
       <SubRoutes />
       <Socials />
