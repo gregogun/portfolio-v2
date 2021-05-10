@@ -13,6 +13,7 @@ import NextLink from 'next/link';
 import Container from '../components/container';
 import { HeroVisual } from '../components/custom/heroVisual';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
+import { NewsletterCard } from './newsletter';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <FeaturedProjects />
         <FeaturedArticles />
+        <NewsletterCard />
       </ContentWrapper>
     </Container>
   );
@@ -29,9 +31,9 @@ export default function Home() {
 const Hero = () => {
   const [isXtraLarge] = useMediaQuery('(min-width: 1280px)');
   return (
-    <Flex w={{ base: '90%', sm: '100%' }}>
-      <Box m="auto" w={{ base: '100%', lg: '596px' }} h="100%">
-        <Heading as="h1" variant="h1">
+    <Flex justify="space-between" w={{ base: '90%', sm: '100%' }}>
+      <Box m={!isXtraLarge && 'auto'} w={{ base: '100%', xl: '50%' }}>
+        <Heading mb="0.5rem" as="h1" variant="h1">
           Hi, I’m Greg Ogun.
         </Heading>
         <Text mb={{ base: '4rem', lg: '6rem' }} as="h2" variant="subtitle">
@@ -41,15 +43,15 @@ const Hero = () => {
         <Heading as="h3" variant="h3" mb="0.5rem">
           Ok, but who are you?
         </Heading>
-        <Text mb="2rem">
+        <Text fontSize="xl" mb="2rem">
           I’m a curiosity-driven, design-focused developer, building rich,
           user-centric, inclusive experiences on the web.
         </Text>
-        <Text mb={{ base: '1rem', lg: '2rem' }}>
+        <Text fontSize="xl" mb={{ base: '1rem', lg: '2rem' }}>
           Feel free to have a look around, and learn more about myself and what
           I like to work on.{' '}
         </Text>
-        <Button w="184px" h="50px" variant="primaryThemed" size="md">
+        <Button variant="primaryThemed" size="lg">
           Get in touch
         </Button>
       </Box>
@@ -59,7 +61,6 @@ const Hero = () => {
 };
 
 const FeaturedProjects = () => {
-  const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
     <VStack spacing="4rem" w="100%" m="auto">
       <FeatureHeading>Featured Projects</FeatureHeading>
