@@ -1,4 +1,6 @@
 import { Button, ChakraProvider, Flex, useColorMode } from '@chakra-ui/react';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/sora/700.css';
 import customTheme from '../styles/theme';
 import React from 'react';
 
