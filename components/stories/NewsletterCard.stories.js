@@ -8,3 +8,6 @@ export default {
 const Template = (args) => <NewsletterCard {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+  placeholder: 'me@gregogun.com'
+};

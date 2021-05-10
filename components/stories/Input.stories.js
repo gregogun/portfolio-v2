@@ -10,7 +10,7 @@ const Template = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   placeholder: 'me@gregogun.com',
-  w: '17.5rem',
+  w: { base: '10rem', xl: '17.5rem' },
   borderRadius: 'sm'
 };
 
