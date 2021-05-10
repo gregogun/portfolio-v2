@@ -51,7 +51,7 @@ export const Text = {
 
 export const textStyles = {
   h1: {
-    fontSize: { base: '32px', lg: '64px' },
+    fontSize: { base: '32px', lg: '56px' },
     fontWeight: 700,
     lineHeight: { base: '140%', lg: '125%' }
   },

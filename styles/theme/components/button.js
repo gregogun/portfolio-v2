@@ -1,6 +1,7 @@
 export const Button = {
   // Styles for the base style
   baseStyle: {
+    fontFamily: 'Sora',
     fontWeight: 'bold',
     textTransform: 'uppercase',
     borderRadius: 'sm'
