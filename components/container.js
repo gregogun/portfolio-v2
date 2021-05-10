@@ -51,7 +51,7 @@ const Container = ({ children }) => {
         Skip to Content
       </Button>
       <Box
-        w={{ base: '100vw', sm: '90vw', lg: '90vw', '2xl': '72vw' }}
+        w={{ base: '100vw', sm: '90vw', '2xl': '80vw', '3xl': '72vw' }}
         minH="100vh"
         m="auto"
       >
@@ -76,8 +76,8 @@ const Navbar = ({ isOpen, toggleIsOpen }) => {
     >
       <MenuButton toggleIsOpen={toggleIsOpen} />
       <Logo />
-      <HStack spacing={{ base: 0, md: 8 }} align="center">
-        <Flex display={{ base: 'none', lg: 'flex' }} as="ul">
+      <HStack spacing={{ base: 0, md: 8 }}>
+        <Flex align="center" display={{ base: 'none', lg: 'flex' }} as="ul">
           <Item variant="noStyle" href="/">
             Home
           </Item>
@@ -116,16 +116,16 @@ const MobileNavMenu = () => {
   return (
     <VStack spacing={4} w="100%">
       <VStack p={4} w="100%" my={8} spacing={8} as="ul">
-        <Item variant="large" href="/">
+        <Item spacing={4} variant="large" href="/">
           Home
         </Item>
-        <Item variant="large" href="/about">
+        <Item spacing={4} variant="large" href="/about">
           About
         </Item>
-        <Item variant="large" href="/projects">
+        <Item spacing={4} variant="large" href="/projects">
           Projects
         </Item>
-        <Item variant="large" href="/blog">
+        <Item spacing={4} variant="large" href="/blog">
           Blog
         </Item>
       </VStack>
@@ -207,14 +207,12 @@ const Item = ({ children, href, ...props }) => {
   return (
     <VStack
       align="start"
-      spacing={4}
-      pb={4}
+      pb={!isLarge && 4}
       w="100%"
-      h="100%"
       as="li"
       listStyleType="none"
       borderBottom={!isLarge && '1px solid'}
-      borderColor={colorGrey}
+      borderColor={isLarge && colorGrey}
     >
       <StyledLink {...props} href={href}>
         {children}
