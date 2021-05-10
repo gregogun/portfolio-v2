@@ -7,6 +7,7 @@ export const StyledLink = ({ children, href, ...props }) => {
   return (
     <NextLink href={href} passHref>
       <Link
+        aria-labelledby={children}
         {...props}
         mr="1rem"
         position="relative"
