@@ -9,9 +9,12 @@ export const useColorModeSwitcher = () => {
 
   const colorGrey = useColorModeValue('neutral.200', 'neutral.600');
 
-  const success = useColorModeValue('successDark', 'successLight');
+  const success = useColorModeValue(
+    'accent.successDark',
+    'accent.successLight'
+  );
 
-  const error = useColorModeValue('errorDark', 'errorLight');
+  const error = useColorModeValue('accent.errorDark', 'accent.errorLight');
 
   return { colorLight, colorDark, colorGrey, themed, success, error };
 };
