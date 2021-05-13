@@ -13,7 +13,8 @@ import NextLink from 'next/link';
 import Container from '../components/container';
 import { HeroVisual } from '../components/custom/heroVisual';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
-import { NewsletterCard } from './newsletter';
+import NewsletterCard from '../components/newsletterCard';
+import ProjectCard from '../components/projectCard';
 
 export default function Home() {
   return (
@@ -70,21 +71,8 @@ const FeaturedProjects = () => {
         direction={{ base: 'column', xl: 'row' }}
         justify="space-evenly"
       >
-        <Center
-          mx="auto"
-          mb={{ base: '2.5rem', xl: null }}
-          border="1px solid"
-          boxSize={{ base: '20rem', lg: '30rem' }}
-        >
-          Project 1
-        </Center>
-        <Center
-          mx="auto"
-          border="1px solid"
-          boxSize={{ base: '20rem', lg: '30rem' }}
-        >
-          Project 2
-        </Center>
+        <ProjectCard mx="auto" mb={{ base: '2rem', lg: 0 }} />
+        <ProjectCard mx="auto" />
       </Flex>
       <NextLink href="/projects" passHref>
         <Link
@@ -124,7 +112,7 @@ export const ArticleCard = () => {
     <Box
       mx="auto"
       p="2rem"
-      border="1px solid"
+      border="2px solid"
       borderColor={colorGrey}
       w={{ base: '21em', lg: '57.5rem' }}
     >
