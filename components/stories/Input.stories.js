@@ -26,8 +26,8 @@ Invalid.args = {
   isInvalid: true
 };
 
-export const Required = Template.bind({});
-Required.args = {
+export const Flushed = Template.bind({});
+Flushed.args = {
   ...Default.args,
-  isRequired: true
+  variant: 'flushed'
 };
