@@ -67,6 +67,7 @@ const Container = ({ children }) => {
 
 const Navbar = ({ isOpen, toggleIsOpen }) => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { colorDark } = useColorModeSwitcher();
   return (
     <Flex
       mb={isOpen ? { base: '1rem' } : { base: '4.5rem', lg: '6rem' }}
@@ -75,7 +76,7 @@ const Navbar = ({ isOpen, toggleIsOpen }) => {
       justify="space-between"
     >
       <MenuButton toggleIsOpen={toggleIsOpen} />
-      <Logo />
+      <Logo fill={colorDark} />
       <HStack spacing={{ base: 0, md: 8 }}>
         <Flex align="center" display={{ base: 'none', lg: 'flex' }} as="ul">
           <Item variant="noStyle" href="/">
@@ -203,16 +204,16 @@ const Line = ({ ...props }) => {
 
 const Item = ({ children, href, ...props }) => {
   const { colorGrey } = useColorModeSwitcher();
-  const [isLarge] = useMediaQuery('(min-width: 992px)');
+  //const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
     <VStack
       align="start"
-      pb={!isLarge && 4}
+      pb={{ base: 4, lg: 0 }}
       w="100%"
       as="li"
       listStyleType="none"
-      borderBottom={!isLarge && '1px solid'}
-      borderColor={isLarge && colorGrey}
+      borderBottom={{ base: '1px solid', lg: 'none' }}
+      borderColor={colorGrey}
     >
       <StyledLink {...props} href={href}>
         {children}

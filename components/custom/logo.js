@@ -45,7 +45,6 @@ export const Logo = ({ boxSize = '48px', ...props }) => {
       {...props}
       strokeWidth="2px"
       stroke="currentcolor"
-      fill={colorDark}
       boxSize={boxSize}
       as={LogoBase}
     />
