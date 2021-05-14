@@ -1,62 +1,74 @@
 import {
   Box,
   Center,
-  Flex,
   Heading,
   HStack,
   List,
-  ListItem,
   Text,
   VStack
 } from '@chakra-ui/layout';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
-import { SiReact } from 'react-icons/si';
 import Icon from '@chakra-ui/icon';
 import { Button } from '@chakra-ui/button';
-import { Logo } from './custom/logo';
+import projects from '@/data/projects';
 
-const ProjectCard = ({ ...props }) => {
+const Projects = () => {
+  return (
+    <List display={{ base: 'block', '2xl': 'flex' }}>
+      {projects.map((project) => (
+        <ProjectCard project={project} key={project.id} />
+      ))}
+    </List>
+  );
+};
+
+const ProjectCard = ({ project, ...props }) => {
   const { colorDark, colorGrey, colorLight } = useColorModeSwitcher();
   return (
     <Box
+      as="li"
+      mb={{ base: '2rem', '2xl': 0 }}
+      mx="auto"
+      mr={{ '2xl': '4rem' }}
+      listStyleType="none"
       border="2px solid"
       borderColor={colorGrey}
       w={{ base: '100%', md: '30rem' }}
-      // py="2rem"
-      // px="3rem"
       {...props}
     >
       <Center fill={colorLight} mb="3rem" w="100%" h="8rem" bg={colorDark}>
-        <Logo />
+        {project.logo}
       </Center>
       <VStack px="2rem" align="start" spacing="2rem">
         <Heading as="h3" variant="h3">
-          Project Title
+          {project.title}
         </Heading>
-        <Text>
-          This is a basic, consice description of what the project is about.
-          Blah, blah, blah, blah, blah.{' '}
-        </Text>
+        <Text>{project.description}</Text>
         <List display="flex" flexDirection="row">
-          <ReactIcon />
-          <ReactIcon />
-          <ReactIcon />
+          {project.tools.map((tool) => (
+            <Icon
+              transitionDuration="300ms"
+              boxSize="1.5rem"
+              as={tool.icon}
+              key={tool.id}
+              _hover={{ fill: tool.color }}
+              mr="1rem"
+            />
+          ))}
         </List>
         <HStack pb="2rem">
-          <Button variant="secondary">Visit Site</Button>
-          <Button variant="secondary">Visit Repo</Button>
+          {project.live && (
+            <Button as="a" href={project.live} variant="secondary">
+              Visit Site
+            </Button>
+          )}
+          <Button as="a" href={project.repo} variant="secondary">
+            Visit Repo
+          </Button>
         </HStack>
       </VStack>
     </Box>
   );
 };
 
-const ReactIcon = () => {
-  return (
-    <ListItem mr="1rem">
-      <Icon boxSize="1.5rem" as={SiReact} />
-    </ListItem>
-  );
-};
-
-export default ProjectCard;
+export default Projects;
