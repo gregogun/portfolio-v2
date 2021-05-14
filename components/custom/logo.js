@@ -38,7 +38,7 @@ const LogoBase = createIcon({
   )
 });
 
-export const Logo = ({ boxSize = '48px', ...props }) => {
+export const Logo = ({ boxSize = '3rem', ...props }) => {
   const { colorLight, colorDark } = useColorModeSwitcher();
   return (
     <Icon
