@@ -14,7 +14,10 @@ import projects from '@/data/projects';
 
 const Projects = () => {
   return (
-    <List display={{ base: 'block', '2xl': 'flex' }}>
+    <List
+      justifyContent="space-between"
+      display={{ base: 'block', '2xl': 'flex' }}
+    >
       {projects.map((project) => (
         <ProjectCard project={project} key={project.id} />
       ))}
@@ -28,8 +31,7 @@ const ProjectCard = ({ project, ...props }) => {
     <Box
       as="li"
       mb={{ base: '2rem', '2xl': 0 }}
-      mx="auto"
-      mr={{ '2xl': '4rem' }}
+      mx="1rem"
       listStyleType="none"
       border="2px solid"
       borderColor={colorGrey}
