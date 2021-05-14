@@ -1,5 +1,4 @@
 import {
-  Center,
   Heading,
   Flex,
   Text,
@@ -10,11 +9,11 @@ import {
   Link
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import Container from '../components/container';
-import { HeroVisual } from '../components/custom/heroVisual';
-import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
-import NewsletterCard from '../components/newsletterCard';
-import ProjectCard from '../components/projectCard';
+import Container from '@/components/container';
+import { HeroVisual } from '@/components/custom/heroVisual';
+import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
+import NewsletterCard from '@/components/newsletterCard';
+import Projects from '@/components/projectCard';
 
 export default function Home() {
   return (
@@ -71,8 +70,7 @@ const FeaturedProjects = () => {
         direction={{ base: 'column', xl: 'row' }}
         justify="space-evenly"
       >
-        <ProjectCard mx="auto" mb={{ base: '2rem', lg: 0 }} />
-        <ProjectCard mx="auto" />
+        <Projects />
       </Flex>
       <NextLink href="/projects" passHref>
         <Link
