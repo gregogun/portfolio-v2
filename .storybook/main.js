@@ -13,15 +13,20 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y'
   ],
-  webpackFinal: async (config) => {
+  webpackFinal: async (config, { configType }) => {
     return {
       ...config,
       resolve: {
         ...config.resolve,
+        modules: [path.resolve(__dirname, '..'), 'node_modules'],
         alias: {
           ...config.resolve.alias,
           '@emotion/core': toPath('node_modules/@emotion/react'),
-          'emotion-theming': toPath('node_modules/@emotion/react')
+          'emotion-theming': toPath('node_modules/@emotion/react'),
+          '@/components': path.resolve(__dirname, '../components'),
+          '@/hooks': path.resolve(__dirname, '../utils/hooks'),
+          '@/data': path.resolve(__dirname, '../data'),
+          '@/utils': path.resolve(__dirname, '../utils')
         }
       }
     };
