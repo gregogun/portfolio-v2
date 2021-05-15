@@ -21,7 +21,6 @@ export default function Home() {
       <ContentWrapper>
         <Hero />
         <FeaturedProjects />
-        <FeaturedArticles />
         <NewsletterCard />
       </ContentWrapper>
     </Container>
@@ -32,7 +31,10 @@ const Hero = () => {
   const [isXtraLarge] = useMediaQuery('(min-width: 1280px)');
   return (
     <Flex justify="space-between" w={{ base: '90%', sm: '100%' }}>
-      <Box m={!isXtraLarge && 'auto'} w={{ base: '100%', xl: '50%' }}>
+      <Box
+        // m={!isXtraLarge && 'auto'}
+        w={{ base: '100%', xl: '50%' }}
+      >
         <Heading mb="0.5rem" as="h1" variant="h1">
           Hi, I’m Greg Ogun.
         </Heading>
