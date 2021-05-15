@@ -75,13 +75,16 @@ const FeaturedProjects = () => {
         <Projects />
       </Flex>
       <NextLink href="/projects" passHref>
-        <Link
+        <Button
+          as="a"
+          textTransform="capitalize"
           display="block"
           textAlign="center"
-          fontSize={{ base: 'lg', lg: '2xl' }}
+          fontSize={{ base: 'lg', lg: 'xl' }}
+          variant="secondaryThemed"
         >
           See all projects
-        </Link>
+        </Button>
       </NextLink>
     </VStack>
   );
