@@ -234,7 +234,14 @@ const Footer = () => {
       as="footer"
     >
       {isLarge ? <Full /> : <Condensed />}
-      <Text align="center">© Designed and coded by Greg Ogun</Text>
+      <Link
+        href={`${github.href}/portfolio-v2`}
+        isExternal
+        variant="noStyle"
+        align="center"
+      >
+        © Designed and coded by Greg Ogun
+      </Link>
     </VStack>
   );
 };
