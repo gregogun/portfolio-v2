@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '@/components/container';
-import { HeroVisual } from '@/components/custom/heroVisual';
+import { HeroVisual } from '@/components/svg/heroVisual';
 import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
 import NewsletterCard from '@/components/newsletterCard';
 import Projects from '@/components/projectCard';

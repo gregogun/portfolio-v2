@@ -1,5 +1,5 @@
-import { Logo } from '@/components/custom/logo';
-import { MagicMirrorLogo } from '@/components/custom/mmLogo';
+import { Logo } from '@/components/svg/logo';
+import { MagicMirrorLogo } from '@/components/svg/mmLogo';
 import {
   electron,
   figma,

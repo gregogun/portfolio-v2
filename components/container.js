@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import { Logo } from './custom/logo';
+import { Logo } from './svg/logo';
 import { useColorMode } from '@chakra-ui/color-mode';
 import { IoMoon, IoSunnyOutline } from 'react-icons/io5';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
