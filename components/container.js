@@ -10,12 +10,11 @@ import {
   VisuallyHidden,
   Text,
   VStack,
-  useMediaQuery,
-  Divider
+  useMediaQuery
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import { Logo } from './custom/logo';
+import { Logo } from './svg/logo';
 import { useColorMode } from '@chakra-ui/color-mode';
 import { IoMoon, IoSunnyOutline } from 'react-icons/io5';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
@@ -52,12 +51,12 @@ const Container = ({ children }) => {
         Skip to Content
       </Button>
       <Box
-        w={{ base: '100vw', lg: '90vw', '2xl': '72vw' }}
+        w={{ base: '100vw', sm: '90vw', '2xl': '80vw', '3xl': '72vw' }}
         minH="100vh"
         m="auto"
       >
-        <Navbar toggleIsOpen={toggleIsOpen} />
-        <VStack spacing={48} id="skip" as="main">
+        <Navbar isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
+        <VStack spacing={{ base: '8rem', lg: '10rem' }} id="skip" as="main">
           {isOpen ? <MobileNavMenu /> : children}
           <Footer />
         </VStack>
@@ -66,14 +65,20 @@ const Container = ({ children }) => {
   );
 };
 
-const Navbar = ({ toggleIsOpen }) => {
+const Navbar = ({ isOpen, toggleIsOpen }) => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { colorDark } = useColorModeSwitcher();
   return (
-    <Flex mb={24} as="nav" p="4" justify="space-between">
+    <Flex
+      mb={isOpen ? { base: '1rem' } : { base: '4.5rem', lg: '6rem' }}
+      as="nav"
+      p="4"
+      justify="space-between"
+    >
       <MenuButton toggleIsOpen={toggleIsOpen} />
-      <Logo />
-      <HStack spacing={{ base: 0, md: 8 }} align="center">
-        <Flex display={{ base: 'none', lg: 'flex' }} as="ul">
+      <Logo fill={colorDark} />
+      <HStack spacing={{ base: 0, md: 8 }}>
+        <Flex align="center" display={{ base: 'none', lg: 'flex' }} as="ul">
           <Item variant="noStyle" href="/">
             Home
           </Item>
@@ -112,16 +117,16 @@ const MobileNavMenu = () => {
   return (
     <VStack spacing={4} w="100%">
       <VStack p={4} w="100%" my={8} spacing={8} as="ul">
-        <Item variant="large" href="/">
+        <Item spacing={4} variant="large" href="/">
           Home
         </Item>
-        <Item variant="large" href="/about">
+        <Item spacing={4} variant="large" href="/about">
           About
         </Item>
-        <Item variant="large" href="/projects">
+        <Item spacing={4} variant="large" href="/projects">
           Projects
         </Item>
-        <Item variant="large" href="/blog">
+        <Item spacing={4} variant="large" href="/blog">
           Blog
         </Item>
       </VStack>
@@ -199,17 +204,15 @@ const Line = ({ ...props }) => {
 
 const Item = ({ children, href, ...props }) => {
   const { colorGrey } = useColorModeSwitcher();
-  const [isLarge] = useMediaQuery('(min-width: 992px)');
+  //const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
     <VStack
       align="start"
-      spacing={4}
-      pb={4}
+      pb={{ base: 4, lg: 0 }}
       w="100%"
-      h="100%"
       as="li"
       listStyleType="none"
-      borderBottom={!isLarge && '1px solid'}
+      borderBottom={{ base: '1px solid', lg: 'none' }}
       borderColor={colorGrey}
     >
       <StyledLink {...props} href={href}>
@@ -225,14 +228,20 @@ const Footer = () => {
     <VStack
       borderTop="1px solid"
       borderColor="neutral.200"
-      h="336px"
       py="32px"
-      w="80%"
+      w="100%"
       spacing={{ base: '16px', lg: '64px' }}
       as="footer"
     >
       {isLarge ? <Full /> : <Condensed />}
-      <Text align="center">© Designed and coded by Greg Ogun</Text>
+      <Link
+        href={`${github.href}/portfolio-v2`}
+        isExternal
+        variant="noStyle"
+        align="center"
+      >
+        © Designed and coded by Greg Ogun
+      </Link>
     </VStack>
   );
 };
@@ -255,7 +264,7 @@ const Condensed = () => {
 
 const Full = () => {
   return (
-    <HStack spacing="256px">
+    <HStack align="start" spacing="16rem">
       <MainRoutes />
       <SubRoutes />
       <Socials />

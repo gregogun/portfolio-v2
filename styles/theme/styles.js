@@ -6,7 +6,7 @@ export const styles = {
       color: props.colorMode === 'light' ? 'default.dark' : 'default.light'
     },
     div: {
-      borderRadius: 'md'
+      borderRadius: 'sm'
     }
   })
 };

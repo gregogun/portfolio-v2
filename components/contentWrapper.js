@@ -3,7 +3,6 @@ import { VStack } from '@chakra-ui/layout';
 const ContentWrapper = ({ children }) => {
   return (
     <VStack
-      p={2}
       maxW="550px"
       textAlign="center"
       border="2px solid"
