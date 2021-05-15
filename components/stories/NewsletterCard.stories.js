@@ -18,6 +18,7 @@ Filled.args = {
 export const Loading = Template.bind({});
 Loading.args = {
   ...Default.args,
+  ...Filled.args,
   loading: true
 };
 
