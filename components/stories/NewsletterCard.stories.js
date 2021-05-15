@@ -1,4 +1,4 @@
-import NewsletterCard from '../../components/newsletterCard';
+import NewsletterCard from '@/components/newsletterCard';
 
 export default {
   title: 'Style Guide/Components/Card/Newsletter',

@@ -1,4 +1,4 @@
-import ProjectCard from '../projectCard';
+import ProjectCard from '@/components/projectCard';
 
 export default {
   title: 'Style Guide/Components/Card/Project',
