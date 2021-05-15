@@ -14,6 +14,13 @@ Filled.args = {
   ...Default.args,
   value: 'me@gregogun.com'
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...Default.args,
+  loading: true
+};
+
 export const Valid = Template.bind({});
 Valid.args = {
   ...Default.args,
