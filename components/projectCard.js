@@ -4,6 +4,7 @@ import {
   Heading,
   HStack,
   List,
+  ListItem,
   Text,
   VStack
 } from '@chakra-ui/layout';
@@ -36,7 +37,7 @@ const ProjectCard = ({ project, ...props }) => {
       listStyleType="none"
       border="1px solid"
       borderColor={colorGrey}
-      w={{ base: '100%', md: '30rem' }}
+      w={{ base: '90%', md: '30rem' }}
       {...props}
     >
       <Center
@@ -56,14 +57,14 @@ const ProjectCard = ({ project, ...props }) => {
         <Text>{project.description}</Text>
         <List display="flex" flexDirection="row">
           {project.tools.map((tool) => (
-            <Icon
-              transitionDuration="300ms"
-              boxSize="1.5rem"
-              as={tool.icon}
-              key={tool.id}
-              _hover={{ fill: tool.color }}
-              mr="1rem"
-            />
+            <ListItem key={tool.id} p="0.5rem">
+              <Icon
+                transitionDuration="300ms"
+                boxSize="1.5rem"
+                as={tool.icon}
+                _hover={{ fill: tool.color }}
+              />
+            </ListItem>
           ))}
         </List>
         <HStack pb="2rem">
