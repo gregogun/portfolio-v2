@@ -18,7 +18,7 @@ import { Logo } from './svg/logo';
 import { useColorMode } from '@chakra-ui/color-mode';
 import { IoMoon, IoSunnyOutline } from 'react-icons/io5';
 import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
-import { github, linkedin, twitch, twitter, youtube } from '../content/socials';
+import { github, linkedin, twitch, twitter, youtube } from '../data/socials';
 import { StyledLink } from './styled';
 import useToggle from '../utils/hooks/useToggle';
 
