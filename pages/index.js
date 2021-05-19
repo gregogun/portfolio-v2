@@ -53,7 +53,14 @@ const Hero = () => {
           Feel free to have a look around, and learn more about myself and what
           I like to work on.{' '}
         </Text>
-        <Button variant="primaryThemed" size="lg">
+        <Button
+          as="a"
+          href="mailto:gregogun97@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primaryThemed"
+          size="lg"
+        >
           Get in touch
         </Button>
       </Box>

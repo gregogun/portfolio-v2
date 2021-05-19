@@ -1,9 +1,7 @@
 import {
   Flex,
   Box,
-  IconButton,
   Link,
-  Button,
   HStack,
   Center,
   Icon,
@@ -12,6 +10,7 @@ import {
   VStack,
   useMediaQuery
 } from '@chakra-ui/react';
+import { IconButton, Button } from '@chakra-ui/button';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { Logo } from './svg/logo';
@@ -88,8 +87,8 @@ const Navbar = ({ isOpen, toggleIsOpen }) => {
           <Item variant="noStyle" href="/projects">
             Projects
           </Item>
-          <Item variant="noStyle" href="/blog">
-            Blog
+          <Item isExternal variant="noStyle" href="/gregogun-cv-2021.pdf">
+            CV
           </Item>
         </Flex>
         <IconButton
@@ -249,15 +248,36 @@ const Footer = () => {
 const Condensed = () => {
   return (
     <HStack as="ul">
-      <SocialLink icon={github.icon} href={github.href} name={github.name} />
       <SocialLink
+        color={github.color}
+        icon={github.icon}
+        href={github.href}
+        name={github.name}
+      />
+      <SocialLink
+        color={linkedin.color}
         icon={linkedin.icon}
         href={linkedin.href}
         name={linkedin.name}
       />
-      <SocialLink icon={twitter.icon} href={twitter.href} name={twitter.name} />
-      <SocialLink icon={twitch.icon} href={twitch.href} name={twitch.name} />
-      <SocialLink icon={youtube.icon} href={youtube.href} name={youtube.name} />
+      <SocialLink
+        color={twitter.color}
+        icon={twitter.icon}
+        href={twitter.href}
+        name={twitter.name}
+      />
+      <SocialLink
+        color={twitch.color}
+        icon={twitch.icon}
+        href={twitch.href}
+        name={twitch.name}
+      />
+      <SocialLink
+        color={youtube.color}
+        icon={youtube.icon}
+        href={youtube.href}
+        name={youtube.name}
+      />
     </HStack>
   );
 };
@@ -296,30 +316,51 @@ const SubRoutes = () => {
 const Socials = () => {
   return (
     <VStack spacing={0.25} h="100%" as="ul">
-      <SocialLink icon={github.icon} href={github.href} name={github.name}>
+      <SocialLink
+        color={github.color}
+        icon={github.icon}
+        href={github.href}
+        name={github.name}
+      >
         Github
       </SocialLink>
       <SocialLink
+        color={linkedin.color}
         icon={linkedin.icon}
         href={linkedin.href}
         name={linkedin.name}
       >
         LinkedIn
       </SocialLink>
-      <SocialLink icon={twitter.icon} href={twitter.href} name={twitter.name}>
+      <SocialLink
+        color={twitter.color}
+        icon={twitter.icon}
+        href={twitter.href}
+        name={twitter.name}
+      >
         Twitter
       </SocialLink>
-      <SocialLink icon={twitch.icon} href={twitch.href} name={twitch.name}>
+      <SocialLink
+        color={twitch.color}
+        icon={twitch.icon}
+        href={twitch.href}
+        name={twitch.name}
+      >
         Twitch
       </SocialLink>
-      <SocialLink icon={youtube.icon} href={youtube.href} name={youtube.name}>
+      <SocialLink
+        color={youtube.color}
+        icon={youtube.icon}
+        href={youtube.href}
+        name={youtube.name}
+      >
         Youtube
       </SocialLink>
     </VStack>
   );
 };
 
-const SocialLink = ({ children, icon, href, name }) => {
+const SocialLink = ({ children, color, icon, href, name }) => {
   const [hover, toggleHover] = useToggle();
   const [isLarge] = useMediaQuery('(min-width: 992px)');
   return (
@@ -339,8 +380,8 @@ const SocialLink = ({ children, icon, href, name }) => {
       >
         <Icon
           transform={hover ? 'translateY(-4px)' : 'none'}
-          transitionProperty="transform"
           transitionDuration="500ms"
+          fill={hover && color}
           mr={{ lg: '0.25rem' }}
           boxSize={{ base: '1.5rem', lg: '1rem' }}
           aria-hidden={true}

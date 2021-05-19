@@ -1,3 +1,4 @@
+import { Chakra } from '@/components/svg/chakraLogo';
 import {
   SiHtml5,
   SiCss3,
@@ -80,7 +81,7 @@ export const figma = {
 // add chakraui svg to files and import
 export const chakra = {
   name: 'Chakra UI',
-  //icon: SiFigma,
+  icon: Chakra,
   color: '#319795',
   id: 9
 };
