@@ -19,7 +19,8 @@ export default [
     tools: [react, electron, nodejs, socketIO],
     live: null,
     repo: 'https://github.com/gregogun/magic-mirror-react',
-    id: 1
+    id: 1,
+    feature: true
   },
   {
     logo: <Logo />,
@@ -29,6 +30,7 @@ export default [
     tools: [react, nextjs, storybook, figma],
     live: null,
     repo: 'https://github.com/gregogun/magic-mirror-react',
-    id: 2
+    id: 2,
+    feature: true
   }
 ];
