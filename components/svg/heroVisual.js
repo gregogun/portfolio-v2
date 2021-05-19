@@ -1,5 +1,5 @@
 import { createIcon, defaultProps, Icon } from '@chakra-ui/react';
-import { useColorModeSwitcher } from '../../utils/hooks/useColorModeSwitcher';
+import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
 
 const HeroVisualBase = createIcon({
   defaultProps,
