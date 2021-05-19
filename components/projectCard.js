@@ -74,7 +74,7 @@ const ProjectCard = ({ project, ...props }) => {
             </Button>
           )}
           <Button as="a" href={project.repo} variant="secondary">
-            Visit Repo
+            View Code
           </Button>
         </HStack>
       </VStack>
