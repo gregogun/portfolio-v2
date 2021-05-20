@@ -81,15 +81,16 @@ const Intro = () => {
           things I’m working on that I can’t tell you about just yet!
         </Text>
         <Text mb="2rem">
-          I’m also really into Design Systems and Component Driven User
-          Interfaces and and the tools that are helping us as developers to
-          create more scalable and maintainable UI’s.
+          I’m also really into <em>Design Systems</em> and{' '}
+          <em>Component Driven User Interfaces</em> and I love to explore the
+          tools and techniques that help to create more scalable and
+          maintainable UI’s.
         </Text>
         <Text mb="2rem">
-          When I'm not writing code (or writing or reading about it) you'll
-          typically find me engaging with another creative or engaging activity
-          such as writing music, 3D motion design, gaming, curating playlists or
-          getting lost in a Netflix series!
+          When I'm not coding (or writing or reading about it) you'll typically
+          find me engaging with another creative or engaging activity such as
+          writing music, 3D motion design, gaming, curating playlists or getting
+          lost in a Netflix series!
         </Text>
         <Text>
           Although I love to keep myself busy with activities, I make sure to
