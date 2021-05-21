@@ -1,10 +1,10 @@
 import { Heading, Link, Text } from '@chakra-ui/layout';
-import Container from '../components/container';
-import ContentWrapper from '../components/contentWrapper';
+import Container from '@/layouts/container';
+import ContentWrapper from '@/layouts/contentWrapper';
 
 const Blog = () => {
   return (
-    <Container>
+    <Container title="Blog | Greg Ogun">
       <ContentWrapper>
         <Heading as="h1" variant="h2">
           Blog 🖊

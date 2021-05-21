@@ -6,22 +6,24 @@ import {
   Box,
   useMediaQuery,
   Button,
-  Link
+  Link,
+  List
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import Container from '@/components/container';
+import Container from '@/layouts/container';
 import { HeroVisual } from '@/components/svg/heroVisual';
 import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
-import NewsletterCard from '@/components/newsletterCard';
-import Projects from '@/components/projectCard';
+import Subscribe from '@/components/subscribe';
+import projects from '@/data/projects';
+import { ProjectCard } from '@/components/projectCard';
 
-export default function Home() {
+export default function Homepage() {
   return (
     <Container>
       <ContentWrapper>
         <Hero />
         <FeaturedProjects />
-        <NewsletterCard />
+        <Subscribe />
       </ContentWrapper>
     </Container>
   );
@@ -94,6 +96,20 @@ const FeaturedProjects = () => {
         </Button>
       </NextLink>
     </VStack>
+  );
+};
+
+const Projects = () => {
+  return (
+    <List
+      mx="auto"
+      justifyContent="space-between"
+      display={{ base: 'block', '2xl': 'flex' }}
+    >
+      {projects.map((project) => (
+        <ProjectCard project={project} key={project.id} />
+      ))}
+    </List>
   );
 };
 
