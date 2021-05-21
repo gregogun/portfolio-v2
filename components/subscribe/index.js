@@ -8,7 +8,7 @@ import { useColorModeSwitcher } from '../../utils/hooks/useColorModeSwitcher';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import VisuallyHidden from '@chakra-ui/visually-hidden';
 import { useRef, useState } from 'react';
-import { ErrorMessage, SuccessMessage } from '../styled/message';
+import { ErrorMessage, SuccessMessage } from '../styled';
 
 const Subscribe = ({ valid, invalid, loading, ...props }) => {
   const { themed, colorGrey, errorColor } = useColorModeSwitcher();
