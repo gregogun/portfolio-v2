@@ -9,7 +9,7 @@ import {
   GridItem,
   Link
 } from '@chakra-ui/layout';
-import Container from '../components/container';
+import Container from '@/layouts/container';
 import * as tool from '@/data/tools';
 import Icon from '@chakra-ui/icon';
 import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
@@ -18,7 +18,7 @@ import { youtube, twitch, discord } from '@/data/socials';
 
 const About = () => {
   return (
-    <Container>
+    <Container title="About | Greg Ogun">
       <ContentWrapper>
         <Intro />
         <Skills />
@@ -107,9 +107,7 @@ const Skills = () => {
   const skills = Object.values(tool).slice(0, 12);
   return (
     <Box w="100%" as="section">
-      <SectionHeading mb="8rem" as="h3" variant="h3">
-        Tools & Technologies
-      </SectionHeading>
+      <SectionHeading mb="8rem">Tools & Technologies</SectionHeading>
       <ChakraContainer textAlign="center" p={0}>
         <Text mb="8rem">
           One of my favourite things since I starting to learn to code has been
@@ -168,9 +166,7 @@ const Skill = ({ name, icon, color }) => {
 const Contact = () => {
   return (
     <Box p={{ base: '1rem', md: 0 }} w="100%" as="section">
-      <SectionHeading mb="4rem" as="h3" variant="h3">
-        Get in touch
-      </SectionHeading>
+      <SectionHeading mb="4rem">Get in touch</SectionHeading>
       <ChakraContainer p={0}>
         <Text textAlign={{ md: 'center' }}>
           I'm currently looking for part-time, full-time and freelance roles. If

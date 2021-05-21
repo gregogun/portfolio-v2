@@ -8,26 +8,11 @@ import {
   Text,
   VStack
 } from '@chakra-ui/layout';
-import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
+import { useColorModeSwitcher } from '../../utils/hooks/useColorModeSwitcher';
 import Icon from '@chakra-ui/icon';
 import { Button } from '@chakra-ui/button';
-import projects from '@/data/projects';
 
-const Projects = () => {
-  return (
-    <List
-      mx="auto"
-      justifyContent="space-between"
-      display={{ base: 'block', '2xl': 'flex' }}
-    >
-      {projects.map((project) => (
-        <ProjectCard project={project} key={project.id} />
-      ))}
-    </List>
-  );
-};
-
-const ProjectCard = ({ project, ...props }) => {
+export const ProjectCard = ({ project, ...props }) => {
   const { colorDark, colorGrey, colorLight } = useColorModeSwitcher();
   return (
     <Box
@@ -81,5 +66,3 @@ const ProjectCard = ({ project, ...props }) => {
     </Box>
   );
 };
-
-export default Projects;

@@ -1,6 +1,6 @@
 import { Heading, Text } from '@chakra-ui/layout';
-import Container from '../components/container';
-import ContentWrapper from '../components/contentWrapper';
+import Container from '@/layouts/container';
+import ContentWrapper from '@/layouts/contentWrapper';
 
 const Community = () => {
   return (

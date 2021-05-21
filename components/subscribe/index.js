@@ -2,16 +2,15 @@
 
 import PropTypes from 'prop-types';
 import { Button } from '@chakra-ui/button';
-import Icon from '@chakra-ui/icon';
 import { Input, InputGroup, InputRightElement } from '@chakra-ui/input';
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
-import { useColorModeSwitcher } from '../utils/hooks/useColorModeSwitcher';
-import { IoAlertCircle, IoCheckmarkCircle } from 'react-icons/io5';
+import { Box, Heading, Text } from '@chakra-ui/layout';
+import { useColorModeSwitcher } from '../../utils/hooks/useColorModeSwitcher';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import VisuallyHidden from '@chakra-ui/visually-hidden';
 import { useRef, useState } from 'react';
+import { ErrorMessage, SuccessMessage } from '../styled';
 
-const NewsletterCard = ({ valid, invalid, loading, ...props }) => {
+const Subscribe = ({ valid, invalid, loading, ...props }) => {
   const { themed, colorGrey, errorColor } = useColorModeSwitcher();
   const [form, setForm] = useState(false);
   const inputRef = useRef(null);
@@ -111,36 +110,16 @@ const NewsletterCard = ({ valid, invalid, loading, ...props }) => {
   );
 };
 
-const SuccessMessage = ({ children }) => {
-  const { successColor } = useColorModeSwitcher();
-  return (
-    <Flex align="center">
-      <Icon mr="0.5rem" as={IoCheckmarkCircle} color={successColor} />
-      <Text color={successColor}>{children}</Text>
-    </Flex>
-  );
-};
-
-const ErrorMessage = ({ children }) => {
-  const { errorColor } = useColorModeSwitcher();
-  return (
-    <Flex align="center">
-      <Icon mr="0.5rem" as={IoAlertCircle} color={errorColor} />
-      <Text color={errorColor}>{children}</Text>
-    </Flex>
-  );
-};
-
-NewsletterCard.propTypes = {
+Subscribe.propTypes = {
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
   loading: PropTypes.bool
 };
 
-NewsletterCard.defaultProps = {
+Subscribe.defaultProps = {
   valid: false,
   invalid: false,
   loading: false
 };
 
-export default NewsletterCard;
+export default Subscribe;
