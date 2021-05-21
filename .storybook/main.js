@@ -20,6 +20,7 @@ module.exports = {
           '@emotion/core': toPath('node_modules/@emotion/react'),
           'emotion-theming': toPath('node_modules/@emotion/react'),
           '@/components': path.resolve(__dirname, '../components'),
+          '@/layouts': path.resolve(__dirname, '../layouts'),
           '@/hooks': path.resolve(__dirname, '../utils/hooks'),
           '@/data': path.resolve(__dirname, '../data'),
           '@/utils': path.resolve(__dirname, '../utils')
