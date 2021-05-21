@@ -6,5 +6,7 @@ module.exports = {
     '^@/layouts/(.*)$': '<rootDir>/layouts/$1',
     '^@/styles/(.*)$': '<rootDir>/styles/$1'
   },
-  modulePathIgnorePatterns: ['.next/']
+  modulePathIgnorePatterns: ['.next/'],
+  testURL: `http://localhost`,
+  setupFilesAfterEnv: ['<rootDir>/test/setup.js']
 };
