@@ -106,9 +106,21 @@ const Projects = () => {
       justifyContent="space-between"
       display={{ base: 'block', '2xl': 'flex' }}
     >
-      {projects.map((project) => (
-        <ProjectCard project={project} key={project.id} />
-      ))}
+      {projects
+        .filter((project) => project.feature)
+        .map((project) => (
+          <ProjectCard
+            data-testid="project-card"
+            logo={project.logo}
+            title={project.title}
+            description={project.description}
+            tools={project.tools}
+            live={project.live}
+            proto={project.proto}
+            repo={project.repo}
+            key={project.id}
+          />
+        ))}
     </List>
   );
 };

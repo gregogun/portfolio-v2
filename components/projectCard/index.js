@@ -8,11 +8,21 @@ import {
   Text,
   VStack
 } from '@chakra-ui/layout';
-import { useColorModeSwitcher } from '../../utils/hooks/useColorModeSwitcher';
+import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
 import Icon from '@chakra-ui/icon';
 import { Button } from '@chakra-ui/button';
+import PropTypes from 'prop-types';
 
-export const ProjectCard = ({ project, ...props }) => {
+export const ProjectCard = ({
+  logo,
+  title,
+  description,
+  tools,
+  live,
+  proto,
+  repo,
+  ...props
+}) => {
   const { colorDark, colorGrey, colorLight } = useColorModeSwitcher();
   return (
     <Box
@@ -33,17 +43,18 @@ export const ProjectCard = ({ project, ...props }) => {
         h="8rem"
         bg={colorDark}
       >
-        {project.logo}
+        {logo}
       </Center>
       <VStack px="2rem" align="start" spacing="2rem">
-        <Heading as="h3" variant="h3">
-          {project.title}
+        <Heading data-testid="project-title" as="h3" variant="h3">
+          {title}
         </Heading>
-        <Text>{project.description}</Text>
+        <Text data-testid="project-description">{description}</Text>
         <List display="flex" flexDirection="row">
-          {project.tools.map((tool) => (
+          {tools.map((tool) => (
             <ListItem key={tool.id} p="0.5rem">
               <Icon
+                aria-label={tool.name}
                 transitionDuration="300ms"
                 boxSize="1.5rem"
                 as={tool.icon}
@@ -53,16 +64,31 @@ export const ProjectCard = ({ project, ...props }) => {
           ))}
         </List>
         <HStack pb="2rem">
-          {project.live && (
-            <Button as="a" href={project.live} variant="secondary">
+          {live && (
+            <Button as="a" href={live} variant="primary">
               Visit Site
             </Button>
           )}
-          <Button as="a" href={project.repo} variant="secondary">
+          {proto && (
+            <Button as="a" href={proto} variant="primary">
+              Prototype
+            </Button>
+          )}
+          <Button as="a" href={repo} variant="secondary">
             View Code
           </Button>
         </HStack>
       </VStack>
     </Box>
   );
+};
+
+ProjectCard.propTypes = {
+  logo: PropTypes.element.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  tools: PropTypes.array.isRequired,
+  live: PropTypes.string,
+  proto: PropTypes.string,
+  repo: PropTypes.string.isRequired
 };
