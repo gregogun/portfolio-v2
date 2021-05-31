@@ -7,14 +7,18 @@ import {
   Container as ChakraContainer,
   Grid,
   GridItem,
-  Link
+  Link,
+  Flex
 } from '@chakra-ui/layout';
 import Container from '@/layouts/container';
 import * as tool from '@/data/tools';
 import Icon from '@chakra-ui/icon';
 import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
 import useToggle from '@/utils/hooks/useToggle';
-import { youtube, twitch, discord } from '@/data/socials';
+import { youtube, twitch, discord, twitter } from '@/data/socials';
+import ContactForm from '@/components/contactForm';
+import { ContentWrapper } from '@/layouts/contentWrapper';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 
 const About = () => {
   return (
@@ -30,14 +34,14 @@ const About = () => {
 
 const Intro = () => {
   return (
-    <Box as="section" px={{ base: '1rem', xl: '20rem' }}>
+    <Box as="section">
       <Heading mb="6.5rem" w={{ base: '90%', sm: '100%' }} as="h1" variant="h1">
         About
       </Heading>
       <Heading as="h3" variant="h3">
         Background
       </Heading>
-      <ChakraContainer p={0}>
+      <ChakraContainer maxW={{ base: '20rem', sm: '30rem', md: '40rem' }} p={0}>
         <Text mb="2rem">
           Hey there! I’m Greg, a self-taught developer exploring what’s possible
           on the web.
@@ -106,9 +110,15 @@ const Skills = () => {
   // convert object properties to array for mapping
   const skills = Object.values(tool).slice(0, 12);
   return (
-    <Box w="100%" as="section">
-      <SectionHeading mb="8rem">Tools & Technologies</SectionHeading>
-      <ChakraContainer textAlign="center" p={0}>
+    <Box w="90%" alignSelf="center" as="section">
+      <SectionHeading mb={{ base: '4rem', xl: '8rem' }}>
+        Tools & Technologies
+      </SectionHeading>
+      <ChakraContainer
+        maxW={{ base: '20rem', sm: '30rem', md: '40rem' }}
+        textAlign="center"
+        p={0}
+      >
         <Text mb="8rem">
           One of my favourite things since I starting to learn to code has been
           to see all of the amazing tools other humans have created to make
@@ -118,7 +128,7 @@ const Skills = () => {
       </ChakraContainer>
       <Grid
         m="auto"
-        w={{ md: '80%' }}
+        // w={{ md: '80%' }}
         templateColumns={{ base: 'repeat(3, 1fr)', md: 'repeat(4, 1fr)' }}
         gap={6}
         as="ul"
@@ -164,21 +174,44 @@ const Skill = ({ name, icon, color }) => {
 };
 
 const Contact = () => {
+  const { colorDark, colorGrey } = useColorModeSwitcher();
+  const themed = useColorModeValue('secondary.300', 'primary.500');
   return (
-    <Box p={{ base: '1rem', md: 0 }} w="100%" as="section">
+    <Box id="contact" p={{ base: '1rem', md: 0 }} as="section">
       <SectionHeading mb="4rem">Get in touch</SectionHeading>
-      <ChakraContainer p={0}>
-        <Text textAlign={{ md: 'center' }}>
-          I'm currently looking for part-time, full-time and freelance roles. If
-          you're interested in hiring me, would like to collaborate on a
-          project, or would just like to say hi, then feel free to drop me an{' '}
-          {''}
-          <Link href="mailto:gregogun97@gmail.com" isExternal>
-            email
-          </Link>
-          . I'll endeavour to get back to you as soon as I can!
-        </Text>
-      </ChakraContainer>
+      <Flex
+        direction={{ base: 'column', xl: 'row' }}
+        m="auto"
+        bg={colorDark}
+        p="4rem"
+      >
+        <ChakraContainer
+          m={{ base: '0 0 4rem 0', xl: '0 4rem 0 0' }}
+          maxW="20rem"
+          p={0}
+        >
+          <Text mb="1rem" color={colorGrey} variant="preTitle">
+            Let's chat!
+          </Text>
+          <Text mb="2rem" color={colorGrey}>
+            If you have any questions, opportunities or would just like to say
+            hey then feel free to fill out my contact form and I'll endeavour to
+            get back to you as soon as I can.
+          </Text>
+          <Text color={colorGrey}>
+            Or if you would prefer to, you can also reach me on{' '}
+            <Link color={themed} href={twitter.href}>
+              twitter
+            </Link>{' '}
+            {`and `}
+            <Link color={themed} href={discord.href}>
+              discord
+            </Link>
+            .
+          </Text>
+        </ChakraContainer>
+        <ContactForm />
+      </Flex>
     </Box>
   );
 };
@@ -195,13 +228,4 @@ const SectionHeading = ({ children, ...props }) => {
     </HStack>
   );
 };
-
-const ContentWrapper = ({ children }) => {
-  return (
-    <VStack w="100%" align="start" spacing={{ base: '10rem', lg: '15rem' }}>
-      {children}
-    </VStack>
-  );
-};
-
 export default About;

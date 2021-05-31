@@ -23,7 +23,7 @@ const Container = ({ children, ...customMeta }) => {
         Skip to Content
       </Button>
       <Box
-        w={{ base: '100vw', sm: '90vw', '2xl': '80vw', '3xl': '72vw' }}
+        w={{ base: '100vw', '2xl': '80vw', '3xl': '72vw' }}
         minH="100vh"
         m="auto"
       >

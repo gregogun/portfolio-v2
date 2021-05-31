@@ -16,6 +16,7 @@ import { useColorModeSwitcher } from '@/utils/hooks/useColorModeSwitcher';
 import Subscribe from '@/components/subscribe';
 import projects from '@/data/projects';
 import { ProjectCard } from '@/components/projectCard';
+import { ContentWrapper } from '@/layouts/contentWrapper';
 
 export default function Homepage() {
   return (
@@ -55,16 +56,11 @@ const Hero = () => {
           Feel free to have a look around, and learn more about myself and what
           I like to work on.{' '}
         </Text>
-        <Button
-          as="a"
-          href="mailto:gregogun97@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="primaryThemed"
-          size="lg"
-        >
-          Get in touch
-        </Button>
+        <NextLink href="/about#contact" passHref>
+          <Button as="a" variant="primaryThemed" size="lg">
+            Get in touch
+          </Button>
+        </NextLink>
       </Box>
       {isXtraLarge && <HeroVisual />}
     </Flex>
@@ -169,10 +165,6 @@ export const ArticleCard = () => {
       </Flex>
     </Box>
   );
-};
-
-const ContentWrapper = ({ children }) => {
-  return <VStack spacing={{ base: '10rem', lg: '15rem' }}>{children}</VStack>;
 };
 
 const FeatureHeading = ({ children }) => {
