@@ -43,7 +43,13 @@ export const ProjectCard = ({
         h="8rem"
         bg={colorDark}
       >
-        {logo}
+        {logo ? (
+          logo
+        ) : (
+          <Heading color={colorLight} as="p" variant="h3">
+            {title}
+          </Heading>
+        )}
       </Center>
       <VStack px="2rem" align="start" spacing="2rem">
         <Heading data-testid="project-title" as="h3" variant="h3">
@@ -84,7 +90,7 @@ export const ProjectCard = ({
 };
 
 ProjectCard.propTypes = {
-  logo: PropTypes.element.isRequired,
+  logo: PropTypes.element,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   tools: PropTypes.array.isRequired,
