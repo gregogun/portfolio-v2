@@ -71,7 +71,6 @@ const Full = () => {
   return (
     <HStack align="start" spacing="16rem">
       <MainRoutes />
-      <SubRoutes />
       <Socials />
     </HStack>
   );
@@ -83,7 +82,7 @@ const MainRoutes = () => {
       <NavLink href="/">Home</NavLink>
       <NavLink href="/about">About</NavLink>
       <NavLink href="/projects">Projects</NavLink>
-      <NavLink href="/blog">Blog</NavLink>
+      <NavLink href="/gregogun-cv-2021.pdf">CV</NavLink>
     </VStack>
   );
 };
