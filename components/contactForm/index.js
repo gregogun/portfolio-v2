@@ -13,36 +13,14 @@ import { useState } from 'react';
 import { ErrorMessage, SuccessMessage } from '../styled';
 
 const ContactForm = () => {
-  const { colorGrey, colorDark } = useColorModeSwitcher();
-  const border = useColorModeValue('neutral.500', 'neutral.300');
-  const themed = useColorModeValue('secondary.300', 'primary.500');
+  const border = useColorModeValue('neutral.300', 'neutral.200');
+  const { themed } = useColorModeSwitcher();
   const [form, setForm] = useState(false);
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
     message: ''
   });
-
-  const url = process.env.FORMSPREE_ENDPOINT;
-
-  const handleServerResponse = (ok, msg) => {
-    if (ok) {
-      setForm({
-        state: 'success',
-        message: msg
-      });
-      setInputs({
-        name: '',
-        email: '',
-        message: ''
-      });
-    } else {
-      setForm({
-        state: 'error',
-        message: msg
-      });
-    }
-  };
 
   const handleChange = (e) => {
     setInputs((prev) => ({
@@ -51,25 +29,40 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setForm((prevStatus) => ({
-      loading: true
-    }));
-    fetch(`https://formspree.io/f/xoqydwrl`, {
+    setForm({ state: 'loading' });
+    const res = await fetch(`/api/email`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(inputs)
-    })
-      .then((response) => {
-        handleServerResponse(true, 'Your message has been sent successfully.');
-      })
-      .catch((error) => {
-        handleServerResponse(false, error);
+    });
+
+    const { error } = await res.json();
+
+    if (error) {
+      setForm({
+        state: 'error',
+        message: error
       });
+      return;
+    }
+
+    setForm({
+      state: 'success',
+      message: 'Your message was sent successfully.'
+    });
+    setInputs({
+      name: '',
+      email: '',
+      message: ''
+    });
   };
 
   return (
-    <Box as="form" onSubmit={handleSubmit} w="20rem" color={colorGrey}>
+    <Box as="form" onSubmit={handleSubmit} w="20rem">
       <FormControl id="name">
         <FormLabel>Name</FormLabel>
         <Input
@@ -90,42 +83,42 @@ const ContactForm = () => {
       <FormControl id="message">
         <FormLabel>Message</FormLabel>
         <Textarea
+          isRequired
           value={inputs.message}
           onChange={handleChange}
-          borderColor={border}
-          _hover={{ borderColor: border }}
-          _placeholder={{ color: border }}
+          _hover={{ borderColor: themed }}
           mb="1rem"
+          borderColor={border}
           borderRadius="sm"
-          h="6rem"
+          h="8rem"
           type="text"
           placeholder="message..."
         />
       </FormControl>
-      <Button
-        isLoading={form.state === 'loading'}
-        type="submit"
-        w="50%"
-        _hover={{ color: colorDark, bg: themed }}
-        _active={{ borderColor: themed }}
-        color={themed}
-        borderColor={themed}
-      >
-        Send
-      </Button>
-      {form.state === 'success' && (
-        <SuccessMessage>Your message was successfully sent.</SuccessMessage>
+      {form.state === 'success' ? (
+        <SuccessMessage>{form.message}</SuccessMessage>
+      ) : form.state === 'error' ? (
+        <ErrorMessage>Error: {form.message}</ErrorMessage>
+      ) : (
+        <Button
+          isLoading={form.state === 'loading'}
+          type="submit"
+          w="50%"
+          variant="primaryThemed"
+        >
+          Send
+        </Button>
       )}
     </Box>
   );
 };
 
 const Input = ({ ...props }) => {
-  const border = useColorModeValue('neutral.500', 'neutral.300');
+  const border = useColorModeValue('neutral.300', 'neutral.200');
+  const { themed, colorLight } = useColorModeSwitcher();
   return (
     <ChakraInput
-      _hover={{ borderColor: border }}
-      _placeholder={{ color: border }}
+      _hover={{ borderColor: themed }}
       borderColor={border}
       mb="1rem"
       borderRadius="sm"

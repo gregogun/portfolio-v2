@@ -174,15 +174,14 @@ const Skill = ({ name, icon, color }) => {
 };
 
 const Contact = () => {
-  const { colorDark, colorGrey } = useColorModeSwitcher();
-  const themed = useColorModeValue('secondary.300', 'primary.500');
+  const { themed } = useColorModeSwitcher();
   return (
     <Box id="contact" p={{ base: '1rem', md: 0 }} as="section">
       <SectionHeading mb="4rem">Get in touch</SectionHeading>
       <Flex
+        borderRadius="md"
         direction={{ base: 'column', xl: 'row' }}
         m="auto"
-        bg={colorDark}
         p="4rem"
       >
         <ChakraContainer
@@ -190,15 +189,15 @@ const Contact = () => {
           maxW="20rem"
           p={0}
         >
-          <Text mb="1rem" color={colorGrey} variant="preTitle">
+          <Text mb="1rem" variant="preTitle">
             Let's chat!
           </Text>
-          <Text mb="2rem" color={colorGrey}>
+          <Text mb="2rem">
             If you have any questions, opportunities or would just like to say
             hey then feel free to fill out my contact form and I'll endeavour to
             get back to you as soon as I can.
           </Text>
-          <Text color={colorGrey}>
+          <Text>
             Or if you would prefer to, you can also reach me on{' '}
             <Link color={themed} href={twitter.href}>
               twitter
