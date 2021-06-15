@@ -43,7 +43,7 @@ const Hero = () => {
         </Heading>
         <Text mb={{ base: '4rem', lg: '6rem' }} as="h2" variant="subtitle">
           Welcome to my corner of the internet, where you can find my works,
-          thoughts, favourite coffee and other random things.
+          thoughts, favourite beer and other random things.
         </Text>
         <Heading as="h3" variant="h3" mb="0.5rem">
           Ok, but who are you?
