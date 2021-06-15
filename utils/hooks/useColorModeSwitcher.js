@@ -7,5 +7,14 @@ export const useColorModeSwitcher = () => {
 
   const themed = useColorModeValue('primary.500', 'secondary.300');
 
-  return { colorLight, colorDark, themed };
+  const colorGrey = useColorModeValue('neutral.200', 'neutral.600');
+
+  const successColor = useColorModeValue(
+    'accent.successDark',
+    'accent.successLight'
+  );
+
+  const errorColor = useColorModeValue('accent.errorDark', 'accent.errorLight');
+
+  return { colorLight, colorDark, colorGrey, themed, successColor, errorColor };
 };

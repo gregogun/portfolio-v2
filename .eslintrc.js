@@ -4,10 +4,11 @@ module.exports = {
     'plugin:import/errors',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:jest-dom/recommended',
     'prettier',
     'prettier/react'
   ],
-  plugins: ['react', 'import', 'jsx-a11y'],
+  plugins: ['react', 'import', 'jsx-a11y', 'jest-dom', 'testing-library'],
   rules: {
     'no-console': 1,
     'no-unused-vars': 1,
@@ -16,6 +17,12 @@ module.exports = {
       { ignore: 'ignore', customValidators: 'customValidator' }
     ]
   },
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react']
+    }
+  ],
   env: {
     jest: true,
     es6: true,

@@ -52,6 +52,3 @@ Icon.args = {
   'aria-label': 'Toggle color mode',
   variant: 'icon'
 };
-// isActive: false,
-// isDisabled: false,
-// leftIcon: <CheckCircleIcon />
