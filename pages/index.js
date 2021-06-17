@@ -234,8 +234,7 @@ export const ArticleCard = () => {
       </Flex>
     </Box>
   );
-  );
-}
+};
 
 const Hero = () => {
   const [isXtraLarge] = useMediaQuery('(min-width: 1280px)');
