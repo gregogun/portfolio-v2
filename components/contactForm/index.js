@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ErrorMessage, SuccessMessage } from '../styled';
+import { server } from '../../config';
 
 const ContactForm = () => {
   const border = useColorModeValue('neutral.300', 'neutral.200');
@@ -32,7 +33,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setForm({ state: 'loading' });
-    const res = await fetch(`/api/email`, {
+    const res = await fetch(`${server}/api/email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -115,7 +116,7 @@ const ContactForm = () => {
 
 const Input = ({ ...props }) => {
   const border = useColorModeValue('neutral.300', 'neutral.200');
-  const { themed, colorLight } = useColorModeSwitcher();
+  const { themed } = useColorModeSwitcher();
   return (
     <ChakraInput
       _hover={{ borderColor: themed }}
